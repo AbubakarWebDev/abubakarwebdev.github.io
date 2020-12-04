@@ -131,6 +131,7 @@ Click this Link : https://abubakarwebdev.github.io/webapplications/
 
 
 [website]: https://techmemorise.blogspot.com/
+[portfolio]: https://abubakarwebdev.github.io/
 [twitter]: https://www.twitter.com/techmemorise/
 [facebook]: https://www.facebook.com/techmemories/
 [youtube]: https://www.youtube.com/channel/UCrF1DtyIAwkLPLm6kKYlTQA?view_as=subscriber
