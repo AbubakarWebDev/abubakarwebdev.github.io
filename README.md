@@ -19,6 +19,10 @@
 
 <br />
 
+### Visit My Portfolio Website:
+[<img align="left" alt="techmemorise.blogspot.com" width="22px" src="https://raw.githubusercontent.com/iconic/open-iconic/master/svg/globe.svg" /><b> AbubakarWebDev.github.io</b>][portfolio]
+
+
 ### Languages and Tools:
 
 
@@ -130,6 +134,7 @@ Click this Link : https://abubakarwebdev.github.io/webapplications/
 
 
 [website]: https://techmemorise.blogspot.com/
+[portfolio]: https://abubakarwebdev.github.io/
 [twitter]: https://www.twitter.com/techmemorise/
 [facebook]: https://www.facebook.com/techmemories/
 [youtube]: https://www.youtube.com/channel/UCrF1DtyIAwkLPLm6kKYlTQA?view_as=subscriber
