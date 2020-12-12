@@ -572,7 +572,7 @@ section {
 
 .portfolio .portfolio-wrap::before {
   content: "";
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(0, 0, 0, 0.9);
   position: absolute;
   left: 30px;
   right: 30px;
@@ -629,12 +629,12 @@ section {
 
 .portfolio .portfolio-wrap .portfolio-info h4 {
   font-size: 20px;
-  color: #45505b;
+  color: white;
   font-weight: 600;
 }
 
 .portfolio .portfolio-wrap .portfolio-info p {
-  color: #45505b;
+  color: white;
   font-size: 14px;
   text-transform: uppercase;
   padding: 0;
@@ -647,7 +647,7 @@ section {
 }
 
 .portfolio .portfolio-wrap .portfolio-links a {
-  color: #45505b;
+  color: white;
   margin: 0 2px;
   font-size: 28px;
   display: inline-block;
@@ -671,13 +671,13 @@ section {
 }
 
 .portfolio .portfolio-wrap:hover .portfolio-info::before {
-  top: 15px;
-  left: 15px;
+  top: 5px;
+  left: 5px;
 }
 
 .portfolio .portfolio-wrap:hover .portfolio-info::after {
-  bottom: 15px;
-  right: 15px;
+  bottom: 5px;
+  right: 5px;
 }
 
 /*--------------------------------------------------------------
