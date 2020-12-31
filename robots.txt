@@ -1,6 +1,6 @@
 # All robots allowed
 User-agent: *
-Disallow:
+Allow: /
 
 # Sitemap files
 Sitemap: https://abubakarwebdev.github.io/sitemap.xml
