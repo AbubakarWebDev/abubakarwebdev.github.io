@@ -143,7 +143,49 @@
   // Porfolio isotope and filter
   $(window).on('load', function () {
     var portfolioIsotope = $('.portfolio-container').isotope({
-      itemSelector: '.portfolio-item'
+      itemSelector: '.portfolio-item',
+    });
+
+    $.ajax({
+      type: "get",
+      url: "assets/js/portfolioData.json",
+      dataType: "json",
+      success: function (response, status) {
+        if (status == "success") {
+          var items = "";
+          $.each([response.website, response.webapplication, response.cms, response.php], function (filterIndex, filter) {
+            $.each(filter, function (index, item) { 
+              if (index <= 5) {
+                items += `<div class="col-lg-4 col-md-6 portfolio-item ${item.filter}">
+                  <div class="portfolio-wrap">
+                    <img src="${item.image}" class="img-thumbnail" alt="AbubakarWebDev">
+                    <div class="portfolio-info">
+                      <h4>${item.heading}</h4>
+                      <p>${item.paragraph}</p>
+                      <div class="portfolio-links">
+                        <a href="${item.venobox}" data-gall="portfolioGallery" class="venobox" title="${item.title}"><i class="bx bx-plus"></i></a>
+                        <a href="${item.link}" title="Portfolio Details"><i class="bx bx-link"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>`;
+              }
+            });
+          });
+
+          portfolioIsotope.isotope('insert', $(items)).imagesLoaded().progress(function () {
+            portfolioIsotope.isotope('layout');
+            $('.venobox').venobox({
+              'share': false
+            });
+          }).done(function () {
+            portfolioIsotope.isotope('shuffle');
+          });
+        }
+        else {
+          console.log(response);
+        }
+      }
     });
 
     $('#portfolio-flters li').on('click', function () {
@@ -152,18 +194,67 @@
 
       portfolioIsotope.isotope({
         filter: $(this).data('filter')
-      });
-      aos_init();
-    });
+      }).isotope('shuffle');
 
-    // Initiate venobox (lightbox feature used in portofilo)
-    $('.venobox').venobox({
-      'share': false
+      aos_init();
     });
 
     // Initiate aos_init() function
     aos_init();
 
+    var loadMoreRequest = false;
+
+    $("#loadMoreBtn").on('click', function () {
+      if (!loadMoreRequest) {
+        $.ajax({
+          type: "get",
+          url: "assets/js/portfolioData.json",
+          dataType: "json",
+          success: function (response, status) {
+            if (status == "success") {
+              var items = "";
+              loadMoreRequest = true;
+
+              $.each([response.website, response.webapplication, response.cms, response.php], function (filterIndex, filter) {
+                $.each(filter, function (index, item) { 
+                  if (index > 5) {
+                    items += `<div class="col-lg-4 col-md-6 portfolio-item ${item.filter}">
+                      <div class="portfolio-wrap">
+                        <img src="${item.image}" class="img-thumbnail" alt="AbubakarWebDev">
+                        <div class="portfolio-info">
+                          <h4>${item.heading}</h4>
+                          <p>${item.paragraph}</p>
+                          <div class="portfolio-links">
+                            <a href="${item.venobox}" data-gall="portfolioGallery" class="venobox" title="${item.title}"><i class="bx bx-plus"></i></a>
+                            <a href="${item.link}" title="Portfolio Details"><i class="bx bx-link"></i></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>`;
+                  }
+                });
+              });
+
+              portfolioIsotope.isotope('insert', $(items)).imagesLoaded().progress(function () {
+                portfolioIsotope.isotope('layout');
+
+                $('.venobox').venobox({
+                  'share': false
+                });
+              }).done(function () {
+                portfolioIsotope.isotope('shuffle');
+              });
+            }
+            else {
+              console.log(response);
+            }
+          }
+        });
+      }
+      else {
+        $(this).attr('disabled', true);
+      }
+    });
   });
 
   // Testimonials carousel (uses the Owl Carousel library)
